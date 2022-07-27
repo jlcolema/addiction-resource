@@ -1,0 +1,135 @@
+<?php get_header();?>
+  <div class="page-wrapper">
+    <?php if( get_field('page_banner') ): ?>
+      <div class="heroBackground" style="background: url('<?php the_field('page_banner'); ?>');">
+        <div class="subpage-header-overlay">
+          <div class="container">
+            <div class="row">
+            <div class="col-md-8 col-12">
+              <?php the_title( '<h1 class="subpageTitle" data-ix="fade-in-on-load" itemprop="headline">', '</h1>' ); ?>
+              test
+              <?php $payments = get_field('facility_payment_options');
+
+if( $payments ): ?>
+<ul>
+  <?php foreach( $payments as $payments ): ?>
+    <li><?php echo $payments; ?></li>
+  <?php endforeach; ?>
+</ul>
+<?php endif; ?>
+
+              <div class="subpage-subtitle">
+                <?php if( get_field('page_snippet') ): ?>
+                  <?php the_field('page_snippet'); ?>
+                <?php endif; ?>
+              </div>
+              <div id="breadcrumbs">
+              <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb();}?>
+              <a class="medical-documented"><i class="fas fa-check"></i> Medically documented Content</a>
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <?php if( have_rows('quick_jump') ): ?>
+        <div class="table-contents-mobile no-desktop show-mobile" id="tableContents" role="tablist" aria-multiselectable="false">
+          <a class="table-contents-trigger" data-toggle="collapse" data-parent="#articleSources" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">Table of Contents <i class="fa fa-angle-down rotate-icon contents-arrow"></i></a>
+          <div id="collapseTwo2" class="collapse article-source-block" role="tabpanel" aria-labelledby="article-sources" data-parent="#tableContents">
+            <div class="quick-jump-nav jump-block-mobile" id="quick-jump">
+            <?php while ( have_rows('quick_jump') ) : the_row(); ?>
+              <a class="quick-jump-mobile" href="#<?php the_sub_field('anchor_id'); ?>"><?php the_sub_field('anchor_text'); ?></a>
+            <?php endwhile; ?>
+            </div>
+          </div>
+        </div>
+      <?php else : ?>
+      <?php endif; ?>
+
+    <?php else: ?>
+      <div class="pageIntro">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-12">
+              <?php the_title( '<h1 class="subpageTitle" data-ix="fade-in-on-load" itemprop="headline">', '</h1>' ); ?>
+              <?php if( have_rows('date_options') ): ?>
+                <?php while( have_rows('date_options') ): the_row(); ?>
+                  <?php if( get_sub_field('date_choice') == 'None' ): ?>
+                  <?php endif; ?>
+                  <?php if( get_sub_field('date_choice') == 'Date Published' ): ?>
+                    <p class="postmetadata">Published on <span itemprop="datePublished"><?php the_sub_field('date_published'); ?></span> | Written by the AddictionResource Editorial Team</p>
+                  <?php endif; ?>
+                  <?php if( get_sub_field('date_choice') == 'Date Modified' ): ?>
+                    <p class="postmetadata">Updated on <span itemprop="dateModified"><?php the_sub_field('date_edited'); ?></span> | Written by the AddictionResource Editorial Team</p>
+                  <?php endif; ?>
+                  <?php if( get_sub_field('date_choice') == 'Date Published & Modified' ): ?>
+                    <p class="postmetadata">Updated on <span itemprop="dateModified"><?php the_sub_field('date_edited'); ?></span> | Published on <span itemprop="datePublished"><?php the_sub_field('date_published'); ?></span> | Written by the AddictionResource Editorial Team</p>
+                  <?php endif; ?>
+                <?php endwhile; ?>
+              <?php endif; ?>
+              <div class="subpage-subtitle">
+                <?php if( get_field('page_snippet') ): ?>
+                  <?php the_field('page_snippet'); ?>
+                <?php endif; ?>
+              </div>
+              <div class="page_info_block">
+                <a href="#" data-toggle="modal" data-target="#evidenceModal" class="medical-documented"><i class="fas fa-check"></i> Evidence Based</a>
+              </div>
+              <div id="breadcrumbs">
+              <?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb();}?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php if( have_rows('quick_jump') ): ?>
+        <div class="table-contents-mobile no-desktop show-mobile" id="tableContents" role="tablist" aria-multiselectable="false">
+          <a class="table-contents-trigger" data-toggle="collapse" data-parent="#articleSources" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">Table of Contents <i class="fa fa-angle-down rotate-icon contents-arrow"></i></a>
+          <div id="collapseTwo2" class="collapse article-source-block" role="tabpanel" aria-labelledby="article-sources" data-parent="#tableContents">
+            <div class="quick-jump-nav jump-block-mobile" id="quick-jump">
+            <?php while ( have_rows('quick_jump') ) : the_row(); ?>
+              <a class="quick-jump-mobile" href="#<?php the_sub_field('anchor_id'); ?>"><?php the_sub_field('anchor_text'); ?></a>
+            <?php endwhile; ?>
+          </div>
+          </div>
+        </div>
+      <?php else : ?>
+      <?php endif; ?>
+    <?php endif; ?>
+      <div class="container">
+        <div class="row content">
+          <div class="col-md-8 col-12">
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+              <?php  if (have_posts()) :
+                while (have_posts()) :
+                  the_post_thumbnail($post_id, $size, array('class' => 'featured-images'), array('itemprop' => 'image'));
+                  the_post();
+                  the_content();
+                endwhile;
+              endif;?>
+              
+              <?php if( have_rows('article_sources') ): ?>
+              
+            <a class="collapsed article-source-trigger" data-toggle="collapse" data-parent="#articleSources" href="#collapseSources" aria-expanded="false" aria-controls="collapseSources">
+                Article resources</i>
+            </a>
+
+            <div id="collapseSources" class="collapse article-source-block" role="tabpanel" aria-labelledby="article-sources" data-parent="#articleSources">
+               <ul>
+              <?php while ( have_rows('article_sources') ) : the_row(); ?>
+                <li class="article-source-item"><?php the_sub_field('article_source_text');?><br><a href="<?php the_sub_field('article_source_url'); ?>" rel="nofollow" target="_blank"><?php the_sub_field('article_source_url'); ?></a></li>
+              <?php endwhile; ?>
+              </ul>
+          </div>
+          <div class="content_disclaimer">This page does not provide medical advice. <span class="medical-disclaimer" data-toggle="tooltip" data-placement="bottom" title="The information provided here is advisory / informative, it does not take into account the individual's individual history and individual characteristics and in no way substitutes for the clinical medical examination, diagnosis and treatment of your doctor because you have read something at AddictionResource.net. If you notice an urgent or strange symptom, call your doctor immediately or 911.">See more</span></div>
+        <?php else : ?>
+        <?php endif; ?>
+     
+            </article>
+          </div>
+          <div class="col-md-4 col-12">
+              <?php get_sidebar(); ?>
+          </div>
+        </div>
+      </div>
+<?php get_footer(); ?>
