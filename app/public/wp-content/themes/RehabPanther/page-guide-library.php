@@ -56,7 +56,7 @@ get_header();?>
 							'post_type' => 'post',
 							'post_status' => 'publish',
 							'category_name' => 'guide-page',
-							'posts_per_page' => 9,
+							'posts_per_page' => -1,
 						);
 
 						$guide_page_posts = new WP_Query( $guide_page_settings );
@@ -81,7 +81,11 @@ get_header();?>
 
 											<div class="card-body">
 
-												<h2 class="card-title"><?php the_title(); ?></h2>
+												<h2 class="card-title">
+													
+													<a href="<?php the_permalink(); ?>" class=""><?php the_title(); ?></a>
+												
+												</h2>
 
 												<p class="card-text"><?php echo excerpt('20');?></p>
 
@@ -134,29 +138,6 @@ get_header();?>
 						</div>
 
 					<?php endif; ?>
-
-					<?php /* Temporarily hidden
-
-					<div class="clearfix pagination-wrap">
-				
-						<ul class="pagination">
-					  	
-							<?php
-								global $wp_query;
-								$big = 999999999; // need an unlikely integer
-								echo paginate_links( array(
-									'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-									'format' => '?paged=%#%',
-									'current' => max( 1, get_query_var('paged') ),
-									'total' => $wp_query->max_num_pages
-						  		));
-							?>
-					
-						</ul>
-				
-					</div>
-
-					*/ ?>
 
 				</article>
 		
