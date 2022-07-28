@@ -29,6 +29,8 @@ get_header();?>
 					<?php if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb( ' <div id="breadcrumbs">','</div>' );}?>
 			
 				</div>
+
+				<!-- / Individual Entry -->
 		
 			</div>
 		
@@ -43,15 +45,32 @@ get_header();?>
 		<div class="row content no-pad">
 	
 			<div class="col-md-9 col-12">
-		
+
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				
-					<?php if (have_posts()) : ?>
-					
+
+					<!-- Settings for displaying posts that have the category name of "Guide Page." -->
+
+					<?php
+
+						$guide_page_settings = array(
+							'post_type' => 'post',
+							'post_status' => 'publish',
+							'category_name' => 'guide-page',
+							'posts_per_page' => 9,
+						);
+
+						$guide_page_posts = new WP_Query( $guide_page_settings );
+
+					?>
+
+					<?php if ( $guide_page_posts->have_posts()) : ?>
+
 						<ol class="ar-blog">
-						
-							<?php while (have_posts()) : the_post(); ?>
-							
+
+							<?php while ( $guide_page_posts->have_posts() ) : ?>
+
+								<?php $guide_page_posts->the_post(); ?>
+
 								<li class="br-list-item">
 									
 									<figure class="br-fig">
@@ -79,13 +98,13 @@ get_header();?>
 									</div>
 							
 								</li>
-					
+
 							<?php endwhile; ?>
-						
+
 						</ol>
-				
+
 					<?php endif; ?>
-				
+
 					<div class="clearfix pagination-wrap">
 				
 						<ul class="pagination">
@@ -104,7 +123,7 @@ get_header();?>
 						</ul>
 				
 					</div>
-			
+
 				</article>
 		
 			</div>
