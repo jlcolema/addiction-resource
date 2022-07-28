@@ -1,7 +1,7 @@
 <?php
 
 /*
-Template Name: Guide Page
+Template Name: Guide Library
 */
 
 get_header();?>
@@ -18,7 +18,7 @@ get_header();?>
 			
 				<div class="col-md-8 col-12">
 		  
-					<h1 class="subpageTitle" data-ix="fade-in-on-load" itemprop="headline">Guide Page</h1>
+					<h1 class="subpageTitle" data-ix="fade-in-on-load" itemprop="headline"><?php the_title(); ?></h1>
 		  
 					<div class="subpage-subtitle">
 
