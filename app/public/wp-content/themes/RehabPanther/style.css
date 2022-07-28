@@ -7810,3 +7810,58 @@ span.blog-txt-links {
 .icons-list-content {
     display: grid;
 }
+
+/* Guide Page (Location: /guide-page/) */
+
+.gp__intro {}
+
+    .gp__intro .container {}
+
+        .gp__intro .row {}
+
+            .gp__intro .col {}
+
+                .gp__intro .subpageTitle {}
+
+                .gp__intro .subpage-subtitle {}
+
+                    .gp__intro p {}
+
+.gp__listing {}
+
+    .gp__listing .row {}
+
+        .gp__listing .col {}
+
+            .gp__listing article {}
+
+                .gp__listing .container {
+                    padding: 0;
+                }
+
+                    .gp__container .row {}
+
+                        .gp__container .col {}
+
+                            .gp__container .card {
+                                border: none;
+                                border-radius: .25rem;
+                            }
+
+                                .gp__container img {}
+
+                                .gp__container .card-body {}
+
+                                    .gp__container .card-title {}
+
+                                    .gp__container .card-text {}
+
+                                    .gp__container .date {}
+
+
+
+                .gp__listing .pagination-wrap {}
+
+                        
+
+
