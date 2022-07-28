@@ -6,7 +6,7 @@ Template Name: Guide Library
 
 get_header();?>
 
-<div class="page-wrapper">
+<div class="page-wrapper gp__page-wrapper">
 
 	<!-- Intro -->
 
@@ -22,7 +22,7 @@ get_header();?>
 		  
 					<div class="subpage-subtitle">
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci quam morbi sagittis non amet, metus, curabitur. Sed placerat in elementum curabitur consequat tellus venenatis venenatis. Consectetur eget iaculis amet, cras leo eget. Egestas molestie proin egestas rhoncus ac nibh sit dignissim adipiscing.</p>
+						<?php the_content(); ?>
 
 					</div>
 			
@@ -77,59 +77,26 @@ get_header();?>
 										
 										<div class="card">
 
-											<?php the_post_thumbnail( 'guide-page', array( 'class' => 'card-img-top' ) ); ?>
-
-											<div class="card-body">
-
-												<h2 class="card-title">
-													
-													<a href="<?php the_permalink(); ?>" class=""><?php the_title(); ?></a>
+											<a href="<?php the_permalink(); ?>" class="card__link">
 												
-												</h2>
+												<?php the_post_thumbnail( 'guide-page', array( 'class' => 'card-img-top' ) ); ?>
 
-												<p class="card-text"><?php echo excerpt('20');?></p>
+												<div class="card-body">
 
-												<div class="">
-													<?php the_date(); ?>
+													<h3 class="card-title"><?php the_title(); ?></h3>
+
+													<p class="card-text"><?php echo excerpt('20');?></p>
+
 												</div>
 
-											</div>
+												<div class="date">
+													<?php the_date(); ?>
+												</div>
+											</a>
 
 										</div>
 
 									</div>
-
-									<?php /* Original markup from Blog
-
-									<li class="br-list-item">
-										
-										<figure class="br-fig">
-										
-											<a href="<?php the_permalink(); ?>">
-											
-												<picture>
-												
-													<?php the_post_thumbnail('custom-blog'); ?>
-												
-												</picture>
-											
-											</a>
-										
-										</figure>
-										
-										<div class="br-blck">
-										
-										<h2 class="br-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-										
-											<p class="br-sub-title"><a href="<?php the_permalink(); ?>"><?php echo excerpt('20');?></a></p>
-										
-											<a class="brarw"  href="<?php the_permalink(); ?>">READ MORE <i class="fal fa-arrow-right"></i></a>
-										
-										</div>
-								
-									</li>
-
-									*/ ?>
 
 								<?php endwhile; ?>
 

@@ -7813,58 +7813,97 @@ span.blog-txt-links {
 
 /* Guide Page (Location: /guide-page/) */
 
-.gp__intro {}
+.gp__page-wrapper {
+    padding-top: 0;
+}
 
-    .gp__intro .container {}
+    .gp__intro {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        background: #f9fbfc !important;
+    }
 
-        .gp__intro .row {}
+    @media screen and (min-width: 920px) {
+        .gp__intro {
+            margin-bottom: 60px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
 
-            .gp__intro .col {}
+    @media screen and (min-width: 1000px) {
+        .gp__intro {
+            margin-bottom: 80px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+    }
+        .gp__intro .container {}
 
-                .gp__intro .subpageTitle {}
+            .gp__intro .row {}
 
-                .gp__intro .subpage-subtitle {}
+                .gp__intro .col {}
 
-                    .gp__intro p {}
+                    .gp__intro .subpageTitle {}
 
-.gp__listing {}
+                    .gp__intro .subpage-subtitle {}
 
-    .gp__listing .row {}
+                        .gp__intro p {}
 
-        .gp__listing .col {}
+    .gp__listing {}
 
-            .gp__listing article {}
+        .gp__listing .row {}
 
-                .gp__listing .container {
-                    padding: 0;
-                }
+            .gp__listing .col {}
 
-                    .gp__container .row {}
+                .gp__listing article {}
 
-                        .gp__container .col {}
+                    .gp__listing .container {
+                        padding: 0;
+                    }
 
-                            .gp__container .card {
-                                border: none;
-                                border-radius: .50rem;
-                                box-shadow: 0 4px 33px 9px #0000001A;
-                            }
+                        .gp__container .row {}
 
-                                .gp__container img {
-                                    border-radius: 0.50rem 0.50rem 0 0;
+                            .gp__container .col {}
+
+                                .gp__container .card {
+                                    margin-bottom: 40px;
+                                    border: none;
+                                    border-radius: .50rem;
+                                    box-shadow: 0 4px 33px 9px #0000001a;
                                 }
 
-                                .gp__container .card-body {}
+                                    .gp__container a {
+                                        display: flex;
+                                        flex-direction: column;
+                                        height: 100%;
+                                    }
 
-                                    .gp__container .card-title {}
+                                        .gp__container img {
+                                            border-radius: 0.50rem 0.50rem 0 0;
+                                        }
 
-                                    .gp__container .card-text {}
+                                    .gp__container a:hover,
+                                    .gp__container a:focus {}
 
-                                    .gp__container .date {}
+                                        .gp__container .card-body {}
 
+                                            .gp__container .card-title {
+                                                font-size: 22px;
+                                                line-height: 1.27; /* 28px */
+                                                color: #231f20;
+                                            }
 
+                                            .gp__container .card-text {
+                                                font-size: 18px;
+                                                line-height: 1.5555555556; /* 28px */
+                                                color: #3f3d3d;
+                                            }
 
-                .gp__listing .pagination-wrap {}
-
-                        
-
-
+                                        .gp__container .date {
+                                            margin-top: auto;
+                                            padding: 0 1.25rem 1.25rem 1.25rem;
+                                            font-size: 14px;
+                                            font-weight: 700;
+                                            color: #3f3d3d;
+                                        }
