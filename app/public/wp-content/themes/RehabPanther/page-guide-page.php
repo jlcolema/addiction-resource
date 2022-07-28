@@ -10,11 +10,11 @@ get_header();?>
 
 	<!-- Intro -->
 
-	<div class="pageIntro white-intro">
+	<div class="pageIntro white-intro text-center gp__intro">
 
 		<div class="container">
 
-			<div class="row">
+			<div class="row justify-content-md-center">
 			
 				<div class="col-md-8 col-12">
 		  
@@ -40,11 +40,11 @@ get_header();?>
 	
 	<!-- Listing -->
 
-	<div class="container">
+	<div class="container gp__listing">
 
 		<div class="row content no-pad">
 	
-			<div class="col-md-9 col-12">
+			<div class="col">
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -65,45 +65,77 @@ get_header();?>
 
 					<?php if ( $guide_page_posts->have_posts()) : ?>
 
-						<ol class="ar-blog">
+						<div class="container gp__container">
 
-							<?php while ( $guide_page_posts->have_posts() ) : ?>
+							<div class="row">
 
-								<?php $guide_page_posts->the_post(); ?>
+								<?php while ( $guide_page_posts->have_posts() ) : ?>
 
-								<li class="br-list-item">
-									
-									<figure class="br-fig">
-									
-										<a href="<?php the_permalink(); ?>">
+									<?php $guide_page_posts->the_post(); ?>
+
+									<div class="col col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch">
 										
-											<picture>
-											
-												<?php the_post_thumbnail('custom-blog'); ?>
-											
-											</picture>
-										
-										</a>
-									
-									</figure>
-									
-									<div class="br-blck">
-									
-									<h2 class="br-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-									
-										<p class="br-sub-title"><a href="<?php the_permalink(); ?>"><?php echo excerpt('20');?></a></p>
-									
-										<a class="brarw"  href="<?php the_permalink(); ?>">READ MORE <i class="fal fa-arrow-right"></i></a>
-									
+										<div class="card">
+
+											<?php the_post_thumbnail( 'guide-page', array( 'class' => 'card-img-top' ) ); ?>
+
+											<div class="card-body">
+
+												<h2 class="card-title"><?php the_title(); ?></h2>
+
+												<p class="card-text"><?php echo excerpt('20');?></p>
+
+												<div class="">
+													<?php the_date(); ?>
+												</div>
+
+											</div>
+
+										</div>
+
 									</div>
-							
-								</li>
 
-							<?php endwhile; ?>
+									<?php /* Original markup from Blog
 
-						</ol>
+									<li class="br-list-item">
+										
+										<figure class="br-fig">
+										
+											<a href="<?php the_permalink(); ?>">
+											
+												<picture>
+												
+													<?php the_post_thumbnail('custom-blog'); ?>
+												
+												</picture>
+											
+											</a>
+										
+										</figure>
+										
+										<div class="br-blck">
+										
+										<h2 class="br-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+										
+											<p class="br-sub-title"><a href="<?php the_permalink(); ?>"><?php echo excerpt('20');?></a></p>
+										
+											<a class="brarw"  href="<?php the_permalink(); ?>">READ MORE <i class="fal fa-arrow-right"></i></a>
+										
+										</div>
+								
+									</li>
+
+									*/ ?>
+
+								<?php endwhile; ?>
+
+							</div>
+
+						</div>
 
 					<?php endif; ?>
+
+					<?php /* Temporarily hidden
 
 					<div class="clearfix pagination-wrap">
 				
@@ -123,6 +155,8 @@ get_header();?>
 						</ul>
 				
 					</div>
+
+					*/ ?>
 
 				</article>
 		
