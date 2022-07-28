@@ -7845,10 +7845,13 @@ span.blog-txt-links {
 
                             .gp__container .card {
                                 border: none;
-                                border-radius: .25rem;
+                                border-radius: .50rem;
+                                box-shadow: 0 4px 33px 9px #0000001A;
                             }
 
-                                .gp__container img {}
+                                .gp__container img {
+                                    border-radius: 0.50rem 0.50rem 0 0;
+                                }
 
                                 .gp__container .card-body {}
 
